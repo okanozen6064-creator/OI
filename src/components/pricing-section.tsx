@@ -5,54 +5,62 @@ import { ContactModal } from "./contact-modal"
 
 const tiers = [
     {
-        name: "Dijital Vitrin",
-        id: "tier-vitrin",
-        price: "5.000 ₺",
-        suffix: "Tek Seferlik",
-        description: "Markanız için modern ve profesyonel bir başlangıç.",
+        name: "Kişisel & Blog",
+        id: "tier-personal",
+        price: "25.000 ₺",
+        suffix: "'den başlayan",
+        description: "Kişisel markanız için özel olarak tasarlanmış dijital vitrin.",
         features: [
-            "Modern Web Sitesi Tasarımı",
-            "1 Yıl Domain & Hosting Hediye",
-            "Tam Mobil Uyumluluk",
-            "Temel SEO Optimizasyonu",
-            "WhatsApp Entegrasyonu",
+            "Kişisel markanıza özel tasarım",
+            "Keşif & Strateji Toplantısı",
+            "Temel Marka Danışmanlığı",
+            "5 Sayfa Bilgilendirici İçerik",
+            "Mobil Uyumlu & Responsive",
+            "SEO Dostu Altyapı",
+            "3 Revizyon Hakkı",
+            "Yönetim Paneli Video Eğitimi",
+            "4 Hafta Teslim Süresi",
         ],
-        note: "Yıllık Yenileme: Güncel Kurdan",
         cta: "Teklif Al",
     },
     {
-        name: "Otomasyon Sistemi",
-        id: "tier-otomasyon",
-        price: "12.500 ₺",
-        suffix: "Tek Seferlik",
-        description: "İşletmenizin yükünü hafifleten akıllı sistemler.",
+        name: "KOBİ & Kurumsal",
+        id: "tier-business",
+        price: "45.000 ₺",
+        suffix: "'den başlayan",
+        description: "İşletmeniz için büyüme odaklı, kapsamlı web çözümü.",
         features: [
-            "Her şey dahil (Dijital Vitrin)",
-            "Gelişmiş Rezervasyon Sistemi",
-            "Otomatik E-posta/SMS Bildirimleri",
-            "2 Yıl Hosting Hediye",
-            "Google Maps İşletme Kaydı",
-            "Özel Yönetim Paneli",
+            "İşletmenize özel kurumsal tasarım",
+            "Detaylı Marka & Rakip Analizi",
+            "5-10 Sayfa Kapsamlı İçerik",
+            "Gelişmiş İletişim Formları",
+            "Mobil Uyumlu & Responsive",
+            "Kapsamlı SEO Optimizasyonu",
+            "3 Revizyon Hakkı",
+            "Video Eğitim Serisi",
+            "4-6 Hafta Teslim Süresi",
         ],
         cta: "Teklif Al",
         featured: true,
     },
     {
-        name: "360° Büyüme Partneri",
-        id: "tier-partner",
-        price: "15.000 ₺",
-        suffix: "+ 5.000 ₺/Ay",
-        subPrice: "Kurulum Bedeli",
-        description: "Tam kapsamlı dijital yönetim ve büyüme operasyonu.",
+        name: "E-Ticaret & Satış",
+        id: "tier-ecommerce",
+        price: "60.000 ₺",
+        suffix: "'den başlayan",
+        description: "Ürünlerinizi dünyaya açan, ödeme altyapılı online mağaza.",
         features: [
-            "Full Web & İçerik Yönetimi",
-            "Sosyal Medya (Haftalık 3 Post + 2 Story)",
-            "Düzenli Reklam Yönetimi (Meta/Google)",
-            "Detaylı Aylık Raporlama",
-            "7/24 Öncelikli Destek",
-            "Rakip Analizi & Strateji",
+            "Markanıza özel E-Ticaret Arayüzü",
+            "20 Ürün Girişi (Arttırılabilir)",
+            "Ödeme Sistemi Entegrasyonu (iyzico vb.)",
+            "Stok & Sipariş Yönetimi",
+            "5-10 Sayfa Mağaza Yapısı",
+            "Mobil Uyumlu Satış Deneyimi",
+            "SEO & Dönüşüm Odaklı Kurgu",
+            "3 Revizyon Hakkı",
+            "4-6 Hafta Teslim Süresi",
         ],
-        cta: "Partner Olun",
+        cta: "Teklif Al",
     },
 ]
 
@@ -89,7 +97,7 @@ export function PricingSection() {
                                 </span>
                                 {tier.suffix && (
                                     <span className="text-sm font-semibold leading-6 text-slate-500">
-                                        {tier.subPrice ? `(${tier.subPrice}) ${tier.suffix}` : tier.suffix}
+                                        {tier.suffix}
                                     </span>
                                 )}
                             </div>
@@ -100,17 +108,12 @@ export function PricingSection() {
                                         {feature}
                                     </li>
                                 ))}
-                                {tier.note && (
-                                    <li className="flex gap-x-3 text-xs text-slate-400 mt-4 pt-4 border-t border-slate-100">
-                                        * {tier.note}
-                                    </li>
-                                )}
                             </ul>
                             <ContactModal>
                                 <button
                                     className={`mt-auto block w-full rounded-md px-3 py-2.5 text-center text-sm font-semibold leading-6 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 hover:opacity-90 transition-opacity ${tier.featured
-                                            ? "bg-slate-900 text-white focus-visible:outline-slate-900"
-                                            : "bg-white text-slate-900 ring-1 ring-inset ring-slate-200 hover:bg-slate-50"
+                                        ? "bg-slate-900 text-white focus-visible:outline-slate-900"
+                                        : "bg-white text-slate-900 ring-1 ring-inset ring-slate-200 hover:bg-slate-50"
                                         }`}
                                 >
                                     {tier.cta}

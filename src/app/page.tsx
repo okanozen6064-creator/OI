@@ -8,6 +8,9 @@ import { SplashScreen } from "@/components/splash-screen"
 import { PricingSection } from "@/components/pricing-section"
 import { ContactModal } from "@/components/contact-modal"
 import { Marquee } from "@/components/marquee"
+import { Logo } from "@/components/logo"
+import { FAQSection } from "@/components/faq-section"
+import { WhyChooseUs } from "@/components/why-choose-us"
 
 export default function Home() {
   const [isSplashComplete, setIsSplashComplete] = useState(false)
@@ -20,7 +23,10 @@ export default function Home() {
         {/* Navigation */}
         <nav className="fixed top-0 left-0 right-0 z-40 bg-white/50 backdrop-blur-md border-b border-stone-100">
           <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-            <span className="text-2xl font-black tracking-tighter text-stone-900">OI</span>
+            <div className="flex items-center gap-2">
+              <Logo className="w-10 h-10" fontSize="16" />
+              <span className="text-xl font-bold tracking-tighter text-stone-900">OI Agency</span>
+            </div>
             <div className="flex items-center gap-6">
               <a href="#pricing" className="text-sm font-medium text-stone-600 hover:text-stone-900 hidden sm:block">
                 Hizmetler
@@ -163,11 +169,15 @@ export default function Home() {
           </div>
         </section>
 
+        <WhyChooseUs />
+
         <PricingSection />
+
+        <FAQSection />
 
         <footer className="py-12 bg-stone-100 border-t border-stone-200 text-center">
           <div className="flex items-center justify-center gap-2 mb-4">
-            <span className="text-2xl font-black tracking-tighter text-stone-400">OI</span>
+            <Logo className="w-12 h-12 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300" fontSize="14" />
           </div>
           <p className="text-sm text-stone-500 font-medium">
             © {new Date().getFullYear()} OI Digital Agency.
