@@ -29,6 +29,15 @@ export default function Home() {
               <span className="text-xl font-bold tracking-tighter text-stone-900">OI Agency</span>
             </div>
             <div className="flex items-center gap-6">
+              <ContactModal>
+                <button className="hidden md:flex items-center gap-2 px-3 py-1 rounded-full bg-orange-100/50 border border-orange-200 hover:bg-orange-100 transition-colors cursor-pointer">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
+                  </span>
+                  <span className="text-xs font-bold text-orange-700 uppercase tracking-wide">Ücretsiz Demo</span>
+                </button>
+              </ContactModal>
               <a href="#pricing" className="text-sm font-medium text-stone-600 hover:text-stone-900 hidden sm:block">
                 Hizmetler
               </a>
