@@ -35,26 +35,26 @@ export default function Home() {
         </nav>
 
         {/* Editorial Hero Section */}
-        <section className="relative pt-32 pb-20 px-6 lg:px-8 max-w-7xl mx-auto min-h-[85vh] flex flex-col justify-center">
+        <section className="relative pt-24 pb-16 lg:pt-32 lg:pb-20 px-6 lg:px-8 max-w-7xl mx-auto min-h-[85vh] flex flex-col justify-center">
           {/* Decorative Elements */}
           <div className="absolute top-0 right-0 -z-10 opacity-30 transform rotate-12 pointer-events-none">
-            <div className="w-[500px] h-[500px] bg-gradient-to-br from-stone-300/40 to-transparent rounded-full blur-3xl"></div>
+            <div className="w-[300px] h-[300px] lg:w-[500px] lg:h-[500px] bg-gradient-to-br from-stone-300/40 to-transparent rounded-full blur-3xl"></div>
           </div>
 
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 2.2, duration: 1, ease: "easeOut" }}
-            className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end"
+            className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-end"
           >
             {/* Left Main Content */}
-            <div className="lg:col-span-8 space-y-10">
+            <div className="lg:col-span-8 space-y-8 lg:space-y-10">
               <div className="inline-flex items-center gap-3 border-b border-stone-300 pb-2 mb-4">
                 <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
                 <span className="text-xs font-mono tracking-widest uppercase text-stone-500 font-semibold">Yeni projeler için uygun</span>
               </div>
 
-              <h1 className="text-6xl sm:text-8xl lg:text-9xl font-black tracking-tighter text-stone-900 leading-[0.85]">
+              <h1 className="text-5xl sm:text-7xl lg:text-9xl font-black tracking-tighter text-stone-900 leading-[0.9] lg:leading-[0.85]">
                 DİJİTAL <br />
                 <span className="text-stone-300 selection:bg-stone-300 selection:text-white">MİMARİ</span><br />
                 VE STRATEJİ.
@@ -79,7 +79,6 @@ export default function Home() {
 
             {/* Right Abstract Stats/Visual */}
             <div className="lg:col-span-4 flex flex-col gap-12 lg:items-end lg:justify-end pb-4 opacity-100">
-
               <div className="hidden lg:block w-32 h-32 border border-stone-200 rounded-full relative animate-[spin_10s_linear_infinite]">
                 <div className="absolute top-0 left-1/2 w-2 h-2 bg-stone-900 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
               </div>

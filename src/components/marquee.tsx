@@ -17,10 +17,7 @@ const images = [
 
 export function Marquee() {
     return (
-        <div className="w-full overflow-hidden bg-slate-50/50 py-16 border-y border-slate-100">
-            <div className="mx-auto max-w-7xl px-6 lg:px-8 mb-8 text-center">
-                <p className="text-sm font-medium text-slate-400">REFERANSLARIMIZ</p>
-            </div>
+        <div className="w-full overflow-hidden py-10">
             <div className="relative flex w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
                 <motion.div
                     className="flex flex-nowrap gap-16"
