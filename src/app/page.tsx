@@ -12,6 +12,8 @@ import { Logo } from "@/components/logo"
 import { FAQSection } from "@/components/faq-section"
 import { WhyChooseUs } from "@/components/why-choose-us"
 import { TestimonialsSection } from "@/components/testimonials-section"
+import { QuoteModal } from "@/components/quote-modal"
+import { FloatingCallButton } from "@/components/floating-call-button"
 
 export default function Home() {
   const [isSplashComplete, setIsSplashComplete] = useState(false)
@@ -29,7 +31,7 @@ export default function Home() {
               <span className="text-xl font-bold tracking-tighter text-stone-900">OI Agency</span>
             </div>
             <div className="flex items-center gap-6">
-              <ContactModal>
+              <QuoteModal>
                 <button className="hidden md:flex items-center gap-2 px-3 py-1 rounded-full bg-orange-100/50 border border-orange-200 hover:bg-orange-100 transition-colors cursor-pointer">
                   <span className="relative flex h-2 w-2">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
@@ -37,15 +39,15 @@ export default function Home() {
                   </span>
                   <span className="text-xs font-bold text-orange-700 uppercase tracking-wide">Ücretsiz Demo</span>
                 </button>
-              </ContactModal>
+              </QuoteModal>
               <a href="#pricing" className="text-sm font-medium text-stone-600 hover:text-stone-900 hidden sm:block">
                 Hizmetler
               </a>
-              <ContactModal>
+              <QuoteModal>
                 <button className="rounded-none border border-stone-900 bg-stone-900 px-5 py-2 text-sm font-bold text-white hover:bg-stone-800 transition-colors">
                   Projeyi Başlat
                 </button>
-              </ContactModal>
+              </QuoteModal>
             </div>
           </div>
         </nav>
@@ -81,12 +83,12 @@ export default function Home() {
               </p>
 
               <div className="flex flex-wrap gap-6 pt-4">
-                <ContactModal>
+                <QuoteModal>
                   <button className="group relative inline-flex h-14 items-center justify-center overflow-hidden rounded-none border-2 border-stone-900 bg-stone-900 px-10 font-medium text-stone-50 transition-all duration-300 hover:bg-transparent hover:text-stone-900">
                     <span className="mr-2 text-lg">Projeyi Başlat</span>
                     <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-2" />
                   </button>
-                </ContactModal>
+                </QuoteModal>
                 <a href="#pricing" className="inline-flex h-14 items-center justify-center rounded-none border-b-2 border-stone-300 px-6 font-medium text-stone-500 transition-colors hover:text-stone-900 hover:border-stone-900">
                   Paketleri İncele
                 </a>
@@ -195,6 +197,8 @@ export default function Home() {
             © {new Date().getFullYear()} OI Digital Agency.
           </p>
         </footer>
+
+        <FloatingCallButton />
       </div>
     </main>
   )
