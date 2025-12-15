@@ -11,6 +11,7 @@ import { Marquee } from "@/components/marquee"
 import { Logo } from "@/components/logo"
 import { FAQSection } from "@/components/faq-section"
 import { WhyChooseUs } from "@/components/why-choose-us"
+import { TestimonialsSection } from "@/components/testimonials-section"
 
 export default function Home() {
   const [isSplashComplete, setIsSplashComplete] = useState(false)
@@ -172,6 +173,8 @@ export default function Home() {
         <WhyChooseUs />
 
         <PricingSection />
+
+        <TestimonialsSection />
 
         <FAQSection />
 
