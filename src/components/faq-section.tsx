@@ -7,7 +7,7 @@ import { Plus, Minus } from "lucide-react"
 const faqs = [
     {
         question: "OI Agency Tam Olarak Kimdir?",
-        answer: "Biz (Okan & İbrahim), minimalizm ve yüksek teknolojiyi harmanlayan, İstanbul merkezli butik bir dijital tasarım stüdyosuyuz. Karmaşık ajans hiyerarşileri yerine, doğrudan kurucularla çalıştığınız şeffaf bir süreç sunuyoruz."
+        answer: "Biz (Okan & İbrahim), minimalizm ve yüksek teknolojiyi harmanlayan, Antalya merkezli butik bir dijital tasarım stüdyosuyuz. Karmaşık ajans hiyerarşileri yerine, doğrudan kurucularla çalıştığınız şeffaf bir süreç sunuyoruz."
     },
     {
         question: "Web sitem Google'da nasıl üst sıralarda çıkar?",
@@ -16,10 +16,6 @@ const faqs = [
     {
         question: "Proje teslim süreniz nedir?",
         answer: "Projenin kapsamına göre değişmekle birlikte, standart bir kurumsal web sitesini 1-2 hafta içinde, daha kapsamlı otomasyon sistemlerini ise 3-4 hafta içinde yayına alıyoruz."
-    },
-    {
-        question: "Sitemi daha sonra kendim güncelleyebilir miyim?",
-        answer: "Kesinlikle. Size özel, kullanımı çok kolay bir yönetim paneli hazırlıyoruz. Kod bilginiz olmasa dahi içerikleri, görselleri ve blog yazılarını rahatlıkla güncelleyebilirsiniz."
     },
     {
         question: "Hangi sektörlerle çalışıyorsunuz?",

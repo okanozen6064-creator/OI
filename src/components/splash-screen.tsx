@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion"
 import { useState, useEffect } from "react"
 
-import { Logo } from "@/components/logo"
+
 
 export function SplashScreen({ onComplete }: { onComplete?: () => void }) {
     const [show, setShow] = useState(true)
@@ -35,7 +35,8 @@ export function SplashScreen({ onComplete }: { onComplete?: () => void }) {
                         transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] }, // Smooth ease
                     }}
                 >
-                    <motion.div
+                    <motion.h1
+                        className="text-9xl font-bold tracking-tighter text-stone-900"
                         initial={{ scale: 0.8, opacity: 0 }}
                         animate={{
                             scale: 1,
@@ -43,8 +44,8 @@ export function SplashScreen({ onComplete }: { onComplete?: () => void }) {
                             transition: { duration: 0.8, ease: "easeOut" },
                         }}
                     >
-                        <Logo className="w-32 h-32 md:w-48 md:h-48 shadow-2xl rounded-3xl" fontSize="48" />
-                    </motion.div>
+                        OI
+                    </motion.h1>
                 </motion.div>
             )}
         </AnimatePresence>
