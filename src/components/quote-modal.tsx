@@ -3,7 +3,7 @@
 import * as React from "react"
 import { useState } from "react"
 import * as DialogPrimitive from "@radix-ui/react-dialog"
-import { X, CheckCircle, Loader2, Phone } from "lucide-react"
+import { X, CheckCircle, Loader2, Phone, MessageCircle, User, Mail, MessageSquare, Instagram, Linkedin, Globe, MapPin } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { supabase } from "@/lib/supabase"
 
@@ -94,116 +94,178 @@ export function QuoteModal({ children }: { children: React.ReactNode }) {
     return (
         <Dialog>
             <DialogTrigger asChild>{children}</DialogTrigger>
-            <DialogContent className="p-0 border-none bg-transparent shadow-none max-w-5xl">
-                <div className="flex flex-col lg:flex-row overflow-hidden rounded-3xl shadow-2xl">
+            <DialogContent className="p-0 border-none bg-transparent shadow-none max-w-6xl w-full mx-4">
+                <div className="relative bg-[#ffffff] w-full overflow-hidden rounded-3xl shadow-2xl min-h-[600px] flex flex-col">
 
-                    {/* Left Side: Dark Info Panel */}
-                    <div className="bg-black/95 relative flex-1 p-10 lg:p-14 text-white flex flex-col justify-center min-h-[300px] lg:min-h-[600px]">
-                        {/* Decorative Background Mesh */}
-                        <div className="absolute inset-0 z-0 opacity-20 pointer-events-none"
-                            style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0)', backgroundSize: '40px 40px' }}>
-                        </div>
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-stone-800 rounded-full blur-[100px] opacity-20 pointer-events-none"></div>
-
-                        <div className="relative z-10">
-                            <h3 className="text-orange-500 font-bold uppercase tracking-widest text-sm mb-4">OI Digital Agency</h3>
-                            <h2 className="text-4xl lg:text-5xl font-black tracking-tighter mb-8 leading-tight">
-                                Ücretsiz Danışmanlık <br className="hidden lg:block" /> Alın.
-                            </h2>
-                            <p className="text-stone-400 text-lg mb-10 leading-relaxed max-w-md">
-                                Projenizi hayata geçirmek için ilk adımı atın. Uzman ekibimiz size özel stratejiler geliştirmek için hazır.
-                            </p>
-
-                            <a href="tel:+905013046064" className="inline-flex items-center justify-center bg-orange-600 hover:bg-orange-700 text-white font-bold py-4 px-8 rounded-xl transition-all shadow-lg shadow-orange-900/20 group w-fit">
-                                <Phone className="mr-3 h-5 w-5 fill-current" />
-                                <span className="text-lg">+90 501 304 60 64</span>
-                            </a>
-                        </div>
+                    {/* Background Wireframe Image - Bottom */}
+                    <div className="absolute bottom-0 left-0 w-full h-[300px] z-0 opacity-100 pointer-events-none">
+                        <img
+                            src="/wireframe-bg.png"
+                            alt="Digital Landscape"
+                            className="w-full h-full object-cover object-bottom opacity-80"
+                        />
+                        {/* Gradient overlay to blend top */}
+                        <div className="absolute inset-0 bg-gradient-to-b from-white via-white/50 to-transparent"></div>
                     </div>
 
-                    {/* Right Side: White Form Panel */}
-                    <div className="bg-white flex-1 p-10 lg:p-14 flex flex-col justify-center relative">
-                        {success ? (
-                            <div className="text-center py-12 animate-in fade-in zoom-in duration-300">
-                                <div className="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                                    <CheckCircle className="w-10 h-10" />
+                    <div className="relative z-10 p-6 md:p-12 lg:p-16 flex flex-col items-center">
+
+                        <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-stone-900 mb-12 text-center">
+                            Projeyi Başlatalım
+                        </h2>
+
+                        <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+
+                            {/* LEFT: Form Card */}
+                            <div className="lg:col-span-5 w-full">
+                                <div className="bg-white rounded-2xl shadow-xl border-2 border-stone-100 p-8 transform transition-all hover:shadow-2xl">
+                                    <h3 className="text-xl font-bold text-stone-900 mb-6 flex items-center gap-2">
+                                        <div className="w-2 h-8 bg-orange-500 rounded-full"></div>
+                                        Bize Mesaj Gönderin
+                                    </h3>
+
+                                    {success ? (
+                                        <div className="text-center py-12 animate-in fade-in zoom-in duration-300">
+                                            <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                                                <CheckCircle className="w-8 h-8" />
+                                            </div>
+                                            <h3 className="text-xl font-bold text-stone-900 mb-2">Gönderildi!</h3>
+                                            <p className="text-stone-500 text-sm">En kısa sürede dönüş yapacağız.</p>
+                                        </div>
+                                    ) : (
+                                        <form onSubmit={handleSubmit} className="space-y-5">
+                                            {/* Name Input */}
+                                            <div className="relative group">
+                                                <div className="absolute left-1 top-1 bottom-1 w-10 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600 group-focus-within:bg-orange-500 group-focus-within:text-white transition-all">
+                                                    <User className="w-5 h-5" />
+                                                </div>
+                                                <input
+                                                    required
+                                                    type="text"
+                                                    placeholder="Adınız Soyadınız"
+                                                    className="w-full pl-14 pr-4 py-3 bg-stone-50 border-2 border-stone-100 rounded-xl outline-none focus:border-orange-500 transition-all font-medium text-stone-900 placeholder:text-stone-400"
+                                                    value={formData.fullName}
+                                                    onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                                                />
+                                            </div>
+
+                                            {/* Email Input */}
+                                            <div className="relative group">
+                                                <div className="absolute left-1 top-1 bottom-1 w-10 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 group-focus-within:bg-blue-500 group-focus-within:text-white transition-all">
+                                                    <Mail className="w-5 h-5" />
+                                                </div>
+                                                <input
+                                                    required
+                                                    type="email"
+                                                    placeholder="E-posta Adresiniz"
+                                                    className="w-full pl-14 pr-4 py-3 bg-stone-50 border-2 border-stone-100 rounded-xl outline-none focus:border-blue-500 transition-all font-medium text-stone-900 placeholder:text-stone-400"
+                                                    value={formData.email}
+                                                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                                                />
+                                            </div>
+
+                                            {/* Phone Input (added to match previous form capabilities) */}
+                                            <div className="relative group">
+                                                <div className="absolute left-1 top-1 bottom-1 w-10 bg-purple-100 rounded-lg flex items-center justify-center text-purple-600 group-focus-within:bg-purple-500 group-focus-within:text-white transition-all">
+                                                    <Phone className="w-5 h-5" />
+                                                </div>
+                                                <input
+                                                    required
+                                                    type="tel"
+                                                    placeholder="Telefon Numaranız"
+                                                    className="w-full pl-14 pr-4 py-3 bg-stone-50 border-2 border-stone-100 rounded-xl outline-none focus:border-purple-500 transition-all font-medium text-stone-900 placeholder:text-stone-400"
+                                                    value={formData.phone}
+                                                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                                                />
+                                            </div>
+
+                                            {/* Service Input */}
+                                            <div className="relative group">
+                                                <div className="absolute left-1 top-1 bottom-1 w-10 bg-emerald-100 rounded-lg flex items-center justify-center text-emerald-600 group-focus-within:bg-emerald-500 group-focus-within:text-white transition-all">
+                                                    <MessageSquare className="w-5 h-5" />
+                                                </div>
+                                                <input
+                                                    type="text"
+                                                    placeholder="Hizmet / Mesajınız"
+                                                    className="w-full pl-14 pr-4 py-3 bg-stone-50 border-2 border-stone-100 rounded-xl outline-none focus:border-emerald-500 transition-all font-medium text-stone-900 placeholder:text-stone-400"
+                                                    value={formData.serviceNeeded}
+                                                    onChange={(e) => setFormData({ ...formData, serviceNeeded: e.target.value })}
+                                                />
+                                            </div>
+
+                                            <button
+                                                type="submit"
+                                                disabled={loading}
+                                                className="w-full bg-[#10b981] hover:bg-[#059669] text-white font-bold py-4 rounded-xl transition-all shadow-lg shadow-green-900/10 active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-lg"
+                                            >
+                                                {loading ? (
+                                                    <>
+                                                        <Loader2 className="w-5 h-5 animate-spin" />
+                                                        Gönderiliyor...
+                                                    </>
+                                                ) : (
+                                                    "Gönder"
+                                                )}
+                                            </button>
+                                        </form>
+                                    )}
                                 </div>
-                                <h3 className="text-2xl font-bold text-stone-900 mb-2">Talebiniz Alındı!</h3>
-                                <p className="text-stone-600">En kısa sürede sizinle iletişime geçeceğiz.</p>
                             </div>
-                        ) : (
-                            <>
-                                <h3 className="text-2xl font-bold text-stone-900 mb-8 flex items-center gap-2">
-                                    Hemen Teklif Alın
-                                </h3>
-                                <form onSubmit={handleSubmit} className="space-y-5">
-                                    <div className="space-y-2">
-                                        <label htmlFor="fullName" className="text-sm font-medium text-stone-500 ml-1">Ad Soyad</label>
-                                        <input
-                                            id="fullName"
-                                            required
-                                            type="text"
-                                            placeholder="Adınız ve Soyadınız"
-                                            className="w-full px-4 py-3.5 rounded-xl border border-stone-200 bg-stone-50 text-stone-900 placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-stone-900 focus:border-transparent transition-all"
-                                            value={formData.fullName}
-                                            onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                                        />
+
+                            {/* RIGHT: Info Side */}
+                            <div className="lg:col-span-7 flex flex-col justify-center space-y-12 pt-8 lg:pt-0">
+
+                                {/* Chat Section */}
+                                <div className="space-y-4">
+                                    <h3 className="text-2xl font-bold text-stone-900">Canlı Konuşalım</h3>
+                                    <p className="text-stone-500 leading-relaxed max-w-md">
+                                        Yazışmak yerine konuşmayı mı tercih edersiniz? Ekibimizle WhatsApp üzerinden veya doğrudan arayarak anında iletişime geçebilirsiniz.
+                                    </p>
+                                    <a
+                                        href="https://wa.me/905013046064"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#128c7e] text-white font-bold py-3 px-8 rounded-full transition-all shadow-md hover:shadow-lg group"
+                                    >
+                                        <MessageCircle className="w-5 h-5 group-hover:-translate-y-0.5 transition-transform" />
+                                        WhatsApp'tan Başlat
+                                    </a>
+                                </div>
+
+                                {/* Social Section */}
+                                <div className="space-y-4">
+                                    <h3 className="text-lg font-bold text-stone-900">Bizi Takip Edin</h3>
+                                    <div className="flex items-center gap-4">
+                                        <a href="#" className="w-12 h-12 bg-stone-900 text-white rounded-xl flex items-center justify-center hover:bg-orange-500 transition-colors">
+                                            <span className="font-bold text-xl">X</span>
+                                        </a>
+                                        <a href="#" className="w-12 h-12 bg-[#0077b5] text-white rounded-xl flex items-center justify-center hover:bg-[#005582] transition-colors">
+                                            <Linkedin className="w-6 h-6" />
+                                        </a>
+                                        <a href="#" className="w-12 h-12 bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-500 text-white rounded-xl flex items-center justify-center hover:opacity-90 transition-opacity">
+                                            <Instagram className="w-6 h-6" />
+                                        </a>
                                     </div>
-                                    <div className="space-y-2">
-                                        <label htmlFor="email" className="text-sm font-medium text-stone-500 ml-1">E-posta</label>
-                                        <input
-                                            id="email"
-                                            required
-                                            type="email"
-                                            placeholder="ornek@sirket.com"
-                                            className="w-full px-4 py-3.5 rounded-xl border border-stone-200 bg-stone-50 text-stone-900 placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-stone-900 focus:border-transparent transition-all"
-                                            value={formData.email}
-                                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                        />
-                                    </div>
-                                    <div className="space-y-2">
-                                        <label htmlFor="phone" className="text-sm font-medium text-stone-500 ml-1">Telefon Numarası</label>
-                                        <input
-                                            id="phone"
-                                            required
-                                            type="tel"
-                                            placeholder="05XX XXX XX XX"
-                                            className="w-full px-4 py-3.5 rounded-xl border border-stone-200 bg-stone-50 text-stone-900 placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-stone-900 focus:border-transparent transition-all"
-                                            value={formData.phone}
-                                            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                                        />
-                                    </div>
-                                    <div className="space-y-2">
-                                        <label htmlFor="service" className="text-sm font-medium text-stone-500 ml-1">İhtiyacınız Olan Hizmet</label>
-                                        <input
-                                            id="service"
-                                            type="text"
-                                            placeholder="Örn: Web Tasarım, SEO, E-ticaret..."
-                                            className="w-full px-4 py-3.5 rounded-xl border border-stone-200 bg-stone-50 text-stone-900 placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-stone-900 focus:border-transparent transition-all"
-                                            value={formData.serviceNeeded}
-                                            onChange={(e) => setFormData({ ...formData, serviceNeeded: e.target.value })}
-                                        />
+                                </div>
+
+                                {/* Address / Concept Section */}
+                                <div className="space-y-4 relative">
+                                    <h3 className="text-lg font-bold text-stone-900 flex items-center gap-2">
+                                        <Globe className="w-5 h-5 text-orange-500" />
+                                        Dijital Merkezimiz
+                                    </h3>
+                                    <div className="space-y-1">
+                                        <p className="text-stone-800 font-medium text-lg">Sınırsız Dijital Alan</p>
+                                        <p className="text-stone-500">Antalya'dan Dünyaya, Remote & Global.</p>
+                                        <p className="text-orange-600 font-mono text-sm pt-2">36.8969° N, 30.7133° E</p>
                                     </div>
 
-                                    <div className="pt-4">
-                                        <button
-                                            type="submit"
-                                            disabled={loading}
-                                            className="w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-4 px-6 rounded-xl transition-all shadow-lg shadow-orange-900/10 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-                                        >
-                                            {loading ? (
-                                                <>
-                                                    <Loader2 className="w-5 h-5 animate-spin" />
-                                                    Gönderiliyor...
-                                                </>
-                                            ) : (
-                                                "Teklif İste"
-                                            )}
-                                        </button>
-                                    </div>
-                                </form>
-                            </>
-                        )}
+                                    {/* Decorative element for 'cool web design thing' */}
+                                    <div className="absolute -right-10 top-0 w-32 h-32 bg-gradient-to-br from-orange-400/20 to-blue-400/20 rounded-full blur-[40px] pointer-events-none"></div>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
             </DialogContent>
