@@ -93,100 +93,109 @@ export function QuoteModal({ children }: { children: React.ReactNode }) {
     return (
         <Dialog>
             <DialogTrigger asChild>{children}</DialogTrigger>
-            <DialogContent className="p-0 border-none bg-transparent shadow-none max-w-6xl w-full mx-4">
-                <div className="relative bg-[#ffffff] w-full overflow-hidden rounded-3xl shadow-2xl min-h-[600px] flex flex-col">
+            <DialogContent className="p-0 border-none bg-transparent shadow-none max-w-7xl w-full mx-4">
+                <div className="relative bg-stone-950 w-full overflow-hidden rounded-3xl shadow-2xl min-h-[650px] flex flex-col border border-stone-800">
 
                     {/* Background Wireframe Image - Bottom */}
-                    <div className="absolute bottom-0 left-0 w-full h-[300px] z-0 opacity-100 pointer-events-none">
+                    <div className="absolute inset-0 z-0">
                         <img
-                            src="/wireframe-bg.png"
+                            src="/dark-wireframe-bg.png"
                             alt="Digital Landscape"
-                            className="w-full h-full object-cover object-bottom opacity-80"
+                            className="w-full h-full object-cover opacity-40 mix-blend-screen"
                         />
-                        {/* Gradient overlay to blend top */}
-                        <div className="absolute inset-0 bg-gradient-to-b from-white via-white/50 to-transparent"></div>
+                        {/* Gradient overlay to fade edges */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/80 to-stone-950/90"></div>
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-orange-500/5 via-transparent to-transparent"></div>
                     </div>
 
-                    <div className="relative z-10 p-6 md:p-12 lg:p-16 flex flex-col items-center">
+                    <div className="relative z-10 p-8 md:p-12 lg:p-20 flex flex-col items-center w-full">
 
-                        <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-stone-900 mb-12 text-center">
-                            Projeyi Başlatalım
-                        </h2>
+                        <div className="text-center mb-16 space-y-2">
+                            <h2 className="text-5xl md:text-7xl font-black tracking-tighter text-white drop-shadow-2xl">
+                                PROJEYİ <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-500">BAŞLATALIM</span>
+                            </h2>
+                            <p className="text-stone-400 text-lg uppercase tracking-[0.2em] font-medium">
+                                Geleceği Birlikte Tasarlayalım
+                            </p>
+                        </div>
 
-                        <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+                        <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start">
 
                             {/* LEFT: Form Card */}
-                            <div className="lg:col-span-5 w-full">
-                                <div className="bg-white rounded-2xl shadow-xl border-2 border-stone-100 p-8 transform transition-all hover:shadow-2xl">
-                                    <h3 className="text-xl font-bold text-stone-900 mb-6 flex items-center gap-2">
-                                        <div className="w-2 h-8 bg-orange-500 rounded-full"></div>
+                            <div className="lg:col-span-6 w-full">
+                                <div className="bg-stone-900/40 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/5 p-8 lg:p-10 transform transition-all hover:border-orange-500/30 group">
+                                    <h3 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
+                                        <span className="w-1.5 h-8 bg-gradient-to-b from-orange-500 to-amber-600 rounded-full"></span>
                                         Bize Mesaj Gönderin
                                     </h3>
 
                                     {success ? (
-                                        <div className="text-center py-12 animate-in fade-in zoom-in duration-300">
-                                            <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                                                <CheckCircle className="w-8 h-8" />
+                                        <div className="text-center py-20 animate-in fade-in zoom-in duration-500">
+                                            <div className="w-20 h-20 bg-green-500/20 text-green-400 rounded-full flex items-center justify-center mx-auto mb-6 border border-green-500/30 shadow-[0_0_30px_-5px_rgba(74,222,128,0.3)]">
+                                                <CheckCircle className="w-10 h-10" />
                                             </div>
-                                            <h3 className="text-xl font-bold text-stone-900 mb-2">Gönderildi!</h3>
-                                            <p className="text-stone-500 text-sm">En kısa sürede dönüş yapacağız.</p>
+                                            <h3 className="text-2xl font-bold text-white mb-2">Talebiniz Alındı!</h3>
+                                            <p className="text-stone-400">En kısa sürede sizinle iletişime geçeceğiz.</p>
                                         </div>
                                     ) : (
-                                        <form onSubmit={handleSubmit} className="space-y-5">
-                                            {/* Name Input */}
-                                            <div className="relative group">
-                                                <div className="absolute left-1 top-1 bottom-1 w-10 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600 group-focus-within:bg-orange-500 group-focus-within:text-white transition-all">
-                                                    <User className="w-5 h-5" />
+                                        <form onSubmit={handleSubmit} className="space-y-6">
+
+                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                                {/* Name Input */}
+                                                <div className="relative group/input">
+                                                    <div className="absolute left-4 top-4 text-stone-500 group-focus-within/input:text-orange-500 transition-colors">
+                                                        <User className="w-5 h-5" />
+                                                    </div>
+                                                    <input
+                                                        required
+                                                        type="text"
+                                                        placeholder="Adınız Soyadınız"
+                                                        className="w-full pl-12 pr-4 py-4 bg-stone-950/50 border border-stone-800 rounded-xl outline-none focus:border-orange-500 focus:bg-stone-900/80 transition-all font-medium text-stone-200 placeholder:text-stone-600"
+                                                        value={formData.fullName}
+                                                        onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                                                    />
                                                 </div>
-                                                <input
-                                                    required
-                                                    type="text"
-                                                    placeholder="Adınız Soyadınız"
-                                                    className="w-full pl-14 pr-4 py-3 bg-stone-50 border-2 border-stone-100 rounded-xl outline-none focus:border-orange-500 transition-all font-medium text-stone-900 placeholder:text-stone-400"
-                                                    value={formData.fullName}
-                                                    onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                                                />
+
+                                                {/* Phone Input */}
+                                                <div className="relative group/input">
+                                                    <div className="absolute left-4 top-4 text-stone-500 group-focus-within/input:text-orange-500 transition-colors">
+                                                        <Phone className="w-5 h-5" />
+                                                    </div>
+                                                    <input
+                                                        required
+                                                        type="tel"
+                                                        placeholder="Telefon No"
+                                                        className="w-full pl-12 pr-4 py-4 bg-stone-950/50 border border-stone-800 rounded-xl outline-none focus:border-orange-500 focus:bg-stone-900/80 transition-all font-medium text-stone-200 placeholder:text-stone-600"
+                                                        value={formData.phone}
+                                                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                                                    />
+                                                </div>
                                             </div>
 
                                             {/* Email Input */}
-                                            <div className="relative group">
-                                                <div className="absolute left-1 top-1 bottom-1 w-10 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600 group-focus-within:bg-orange-500 group-focus-within:text-white transition-all">
+                                            <div className="relative group/input">
+                                                <div className="absolute left-4 top-4 text-stone-500 group-focus-within/input:text-orange-500 transition-colors">
                                                     <Mail className="w-5 h-5" />
                                                 </div>
                                                 <input
                                                     required
                                                     type="email"
                                                     placeholder="E-posta Adresiniz"
-                                                    className="w-full pl-14 pr-4 py-3 bg-stone-50 border-2 border-stone-100 rounded-xl outline-none focus:border-orange-500 transition-all font-medium text-stone-900 placeholder:text-stone-400"
+                                                    className="w-full pl-12 pr-4 py-4 bg-stone-950/50 border border-stone-800 rounded-xl outline-none focus:border-orange-500 focus:bg-stone-900/80 transition-all font-medium text-stone-200 placeholder:text-stone-600"
                                                     value={formData.email}
                                                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                                 />
                                             </div>
 
-                                            {/* Phone Input (added to match previous form capabilities) */}
-                                            <div className="relative group">
-                                                <div className="absolute left-1 top-1 bottom-1 w-10 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600 group-focus-within:bg-orange-500 group-focus-within:text-white transition-all">
-                                                    <Phone className="w-5 h-5" />
-                                                </div>
-                                                <input
-                                                    required
-                                                    type="tel"
-                                                    placeholder="Telefon Numaranız"
-                                                    className="w-full pl-14 pr-4 py-3 bg-stone-50 border-2 border-stone-100 rounded-xl outline-none focus:border-orange-500 transition-all font-medium text-stone-900 placeholder:text-stone-400"
-                                                    value={formData.phone}
-                                                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                                                />
-                                            </div>
-
                                             {/* Service Input */}
-                                            <div className="relative group">
-                                                <div className="absolute left-1 top-1 bottom-1 w-10 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600 group-focus-within:bg-orange-500 group-focus-within:text-white transition-all">
+                                            <div className="relative group/input">
+                                                <div className="absolute left-4 top-4 text-stone-500 group-focus-within/input:text-orange-500 transition-colors">
                                                     <MessageSquare className="w-5 h-5" />
                                                 </div>
-                                                <input
-                                                    type="text"
-                                                    placeholder="Hizmet / Mesajınız"
-                                                    className="w-full pl-14 pr-4 py-3 bg-stone-50 border-2 border-stone-100 rounded-xl outline-none focus:border-orange-500 transition-all font-medium text-stone-900 placeholder:text-stone-400"
+                                                <textarea
+                                                    rows={3}
+                                                    placeholder="Projenizden kısaca bahsedin..."
+                                                    className="w-full pl-12 pr-4 py-4 bg-stone-950/50 border border-stone-800 rounded-xl outline-none focus:border-orange-500 focus:bg-stone-900/80 transition-all font-medium text-stone-200 placeholder:text-stone-600 resize-none"
                                                     value={formData.serviceNeeded}
                                                     onChange={(e) => setFormData({ ...formData, serviceNeeded: e.target.value })}
                                                 />
@@ -195,16 +204,16 @@ export function QuoteModal({ children }: { children: React.ReactNode }) {
                                             <button
                                                 type="submit"
                                                 disabled={loading}
-                                                className="w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-4 rounded-xl transition-all shadow-lg shadow-orange-900/20 active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-lg"
+                                                className="w-full bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-500 hover:to-amber-500 text-white font-bold py-5 rounded-xl transition-all shadow-lg shadow-orange-900/40 active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-3 text-lg uppercase tracking-wider relative overflow-hidden group"
                                             >
-                                                {loading ? (
-                                                    <>
-                                                        <Loader2 className="w-5 h-5 animate-spin" />
-                                                        Gönderiliyor...
-                                                    </>
-                                                ) : (
-                                                    "Teklif Alın"
-                                                )}
+                                                <span className="relative z-10 flex items-center gap-2">
+                                                    {loading ? "Gönderiliyor..." : "Teklif Alın"}
+                                                    {!loading && <span className="group-hover:translate-x-1 transition-transform">→</span>}
+                                                </span>
+                                                {loading && <Loader2 className="w-5 h-5 animate-spin relative z-10 ml-2" />}
+
+                                                {/* Button shine effect */}
+                                                <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
                                             </button>
                                         </form>
                                     )}
@@ -212,55 +221,58 @@ export function QuoteModal({ children }: { children: React.ReactNode }) {
                             </div>
 
                             {/* RIGHT: Info Side */}
-                            <div className="lg:col-span-7 flex flex-col justify-center space-y-12 pt-8 lg:pt-0">
+                            <div className="lg:col-span-6 flex flex-col justify-center space-y-16 pt-8 lg:pt-4">
 
-                                {/* Chat Section */}
-                                <div className="space-y-4">
-                                    <h3 className="text-2xl font-bold text-stone-900">Canlı Konuşalım</h3>
-                                    <p className="text-stone-500 leading-relaxed max-w-md">
-                                        Yazışmak yerine konuşmayı mı tercih edersiniz? Ekibimizle WhatsApp üzerinden veya doğrudan arayarak anında iletişime geçebilirsiniz.
+                                {/* Intro Text */}
+                                <div className="space-y-6">
+                                    <h3 className="text-3xl font-bold text-white">
+                                        Hayalinizdeki Projeyi <br />
+                                        <span className="text-stone-500">Gerçeğe Dönüştürelim.</span>
+                                    </h3>
+                                    <p className="text-stone-400 leading-relaxed text-lg max-w-lg border-l-2 border-orange-500/50 pl-6">
+                                        Her büyük marka bir fikirle başlar. Biz, bu fikri dijital bir sanat eserine çevirmek için buradayız.
                                     </p>
+                                </div>
+
+                                {/* Contact Grid */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                    {/* WhatsApp */}
                                     <a
                                         href="https://wa.me/905013046064"
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#128c7e] text-white font-bold py-3 px-8 rounded-full transition-all shadow-md hover:shadow-lg group"
+                                        className="group bg-stone-900/40 border border-white/5 p-6 rounded-2xl hover:bg-stone-800/60 transition-colors flex flex-col gap-4"
                                     >
-                                        <MessageCircle className="w-5 h-5 group-hover:-translate-y-0.5 transition-transform" />
-                                        WhatsApp'tan Başlat
+                                        <div className="w-12 h-12 rounded-full bg-[#25D366]/20 text-[#25D366] flex items-center justify-center group-hover:scale-110 transition-transform">
+                                            <MessageCircle className="w-6 h-6" />
+                                        </div>
+                                        <div>
+                                            <h4 className="text-white font-bold text-lg">WhatsApp</h4>
+                                            <p className="text-stone-500 text-sm">Hızlı İletişim</p>
+                                        </div>
                                     </a>
-                                </div>
 
-                                {/* Social Section */}
-                                <div className="space-y-4">
-                                    <h3 className="text-lg font-bold text-stone-900">Bizi Takip Edin</h3>
-                                    <div className="flex items-center gap-4">
-                                        <a href="#" className="w-12 h-12 bg-stone-900 text-white rounded-xl flex items-center justify-center hover:bg-orange-500 transition-colors">
-                                            <span className="font-bold text-xl">X</span>
-                                        </a>
-                                        <a href="#" className="w-12 h-12 bg-[#0077b5] text-white rounded-xl flex items-center justify-center hover:bg-[#005582] transition-colors">
-                                            <Linkedin className="w-6 h-6" />
-                                        </a>
-                                        <a href="#" className="w-12 h-12 bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-500 text-white rounded-xl flex items-center justify-center hover:opacity-90 transition-opacity">
-                                            <Instagram className="w-6 h-6" />
-                                        </a>
+                                    {/* Location */}
+                                    <div className="group bg-stone-900/40 border border-white/5 p-6 rounded-2xl hover:bg-stone-800/60 transition-colors flex flex-col gap-4">
+                                        <div className="w-12 h-12 rounded-full bg-orange-500/20 text-orange-500 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                            <MapPin className="w-6 h-6" />
+                                        </div>
+                                        <div>
+                                            <h4 className="text-white font-bold text-lg">Konum</h4>
+                                            <p className="text-stone-500 text-sm font-mono mt-1 tracking-tight">36°44'02.1"N 29°55'07.5"E</p>
+                                        </div>
                                     </div>
                                 </div>
 
-                                {/* Address / Concept Section */}
-                                <div className="space-y-4 relative">
-                                    <h3 className="text-lg font-bold text-stone-900 flex items-center gap-2">
-                                        <Globe className="w-5 h-5 text-orange-500" />
-                                        Dijital Merkezimiz
-                                    </h3>
-                                    <div className="space-y-1">
-                                        <p className="text-stone-800 font-medium text-lg">Sınırsız Dijital Alan</p>
-                                        <p className="text-stone-500">Antalya'dan Dünyaya, Remote & Global.</p>
-                                        <p className="text-orange-600 font-mono text-sm pt-2">36.8969° N, 30.7133° E</p>
+                                {/* Socials Minimal */}
+                                <div className="flex items-center gap-6 pt-4">
+                                    <span className="text-stone-600 font-medium uppercase tracking-widest text-sm">Takipte Kalın</span>
+                                    <div className="h-px bg-stone-800 flex-1"></div>
+                                    <div className="flex gap-4">
+                                        <a href="#" className="text-stone-400 hover:text-white transition-colors"><Instagram className="w-6 h-6" /></a>
+                                        <a href="#" className="text-stone-400 hover:text-white transition-colors"><Linkedin className="w-6 h-6" /></a>
+                                        <a href="#" className="text-stone-400 hover:text-white transition-colors"><Globe className="w-6 h-6" /></a>
                                     </div>
-
-                                    {/* Decorative element for 'cool web design thing' */}
-                                    <div className="absolute -right-10 top-0 w-32 h-32 bg-gradient-to-br from-orange-400/20 to-blue-400/20 rounded-full blur-[40px] pointer-events-none"></div>
                                 </div>
 
                             </div>
