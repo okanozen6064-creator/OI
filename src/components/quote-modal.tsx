@@ -93,8 +93,8 @@ export function QuoteModal({ children }: { children: React.ReactNode }) {
     return (
         <Dialog>
             <DialogTrigger asChild>{children}</DialogTrigger>
-            <DialogContent className="p-0 border-none bg-transparent shadow-none max-w-7xl w-full mx-4">
-                <div className="relative bg-[#FAFAF9] w-full overflow-hidden rounded-[2rem] shadow-2xl min-h-[650px] flex flex-col border border-stone-200">
+            <DialogContent className="p-0 border-none bg-transparent shadow-none max-w-7xl w-[95vw] md:w-full mx-auto max-h-[90vh] overflow-y-auto">
+                <div className="relative bg-[#FAFAF9] w-full rounded-2xl md:rounded-[2rem] shadow-2xl flex flex-col border border-stone-200 overflow-hidden">
 
                     {/* Background Architectural Wireframe - Minimalist */}
                     <div className="absolute inset-0 z-0 opacity-40 mix-blend-multiply pointer-events-none">
@@ -106,27 +106,27 @@ export function QuoteModal({ children }: { children: React.ReactNode }) {
                         <div className="absolute inset-0 bg-gradient-to-t from-[#FAFAF9] via-transparent to-transparent"></div>
                     </div>
 
-                    <div className="relative z-10 p-8 md:p-12 lg:p-16 flex flex-col items-center w-full">
+                    <div className="relative z-10 p-5 md:p-12 lg:p-16 flex flex-col items-center w-full">
 
-                        <div className="text-center mb-12 space-y-4">
-                            <h2 className="text-5xl md:text-7xl font-black tracking-tighter text-stone-900 leading-[0.9]">
-                                PROJEYİ <br className="md:hidden" />
+                        <div className="text-center mb-8 md:mb-12 space-y-2 md:space-y-4">
+                            <h2 className="text-3xl md:text-7xl font-black tracking-tighter text-stone-900 leading-[0.9]">
+                                PROJEYİ <br className="hidden md:block" />
                                 <span className="text-stone-400">BAŞLATALIM</span>
                             </h2>
-                            <p className="text-stone-500 text-lg uppercase tracking-widest font-medium">
+                            <p className="text-stone-500 text-sm md:text-lg uppercase tracking-widest font-medium">
                                 Dijital Mimari & Strateji
                             </p>
                         </div>
 
-                        <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+                        <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-20 items-start">
 
                             {/* LEFT: Form Card */}
                             <div className="lg:col-span-6 w-full">
-                                <div className="bg-white rounded-xl shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] border border-stone-100 p-8 lg:p-10 relative overflow-hidden group">
+                                <div className="bg-white rounded-xl shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] border border-stone-100 p-6 md:p-8 lg:p-10 relative overflow-hidden group">
                                     {/* Orange accent line */}
                                     <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-500 to-amber-500"></div>
 
-                                    <h3 className="text-2xl font-bold text-stone-900 mb-8 flex items-center gap-3">
+                                    <h3 className="text-xl md:text-2xl font-bold text-stone-900 mb-6 md:mb-8 flex items-center gap-3">
                                         <span className="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></span>
                                         Bize Mesaj Gönderin
                                     </h3>
@@ -140,10 +140,10 @@ export function QuoteModal({ children }: { children: React.ReactNode }) {
                                             <p className="text-stone-500">En kısa sürede sizinle iletişime geçeceğiz.</p>
                                         </div>
                                     ) : (
-                                        <form onSubmit={handleSubmit} className="space-y-6">
+                                        <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
                                             {/* SQL Injection Note: Supabase client automatically parameterizes queries, preventing SQL injection. */}
 
-                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                                                 {/* Name Input */}
                                                 <div className="group/input">
                                                     <label className="text-xs font-bold text-stone-400 uppercase tracking-wider mb-2 block">Ad Soyad</label>
@@ -216,27 +216,27 @@ export function QuoteModal({ children }: { children: React.ReactNode }) {
                             </div>
 
                             {/* RIGHT: Info Side */}
-                            <div className="lg:col-span-6 flex flex-col justify-center space-y-12 pt-8 lg:pt-4">
+                            <div className="lg:col-span-6 flex flex-col justify-center space-y-8 md:space-y-12 pt-4 lg:pt-4">
 
                                 {/* Intro Text */}
-                                <div className="space-y-6">
-                                    <h3 className="text-3xl font-bold text-stone-900 leading-tight">
+                                <div className="space-y-4 md:space-y-6">
+                                    <h3 className="text-2xl md:text-3xl font-bold text-stone-900 leading-tight">
                                         Hayalinizdeki Projeyi <br />
                                         <span className="text-orange-600">Gerçeğe Dönüştürelim.</span>
                                     </h3>
-                                    <p className="text-stone-600 leading-relaxed text-lg max-w-lg border-l-2 border-stone-200 pl-6">
+                                    <p className="text-stone-600 leading-relaxed text-base md:text-lg max-w-lg border-l-2 border-stone-200 pl-4 md:pl-6">
                                         Markanız için sadece bir web sitesi değil, yaşayan ve büyüyen bir <strong className="text-stone-900">dijital ekosistem</strong> tasarlıyoruz.
                                     </p>
                                 </div>
 
                                 {/* Contact Grid */}
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                                     {/* WhatsApp */}
                                     <a
                                         href="https://wa.me/905013046064"
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="group bg-white border border-stone-200 p-6 rounded-xl hover:shadow-lg hover:border-emerald-200 transition-all flex flex-col gap-3"
+                                        className="group bg-white border border-stone-200 p-4 md:p-6 rounded-xl hover:shadow-lg hover:border-emerald-200 transition-all flex flex-col gap-2 md:gap-3"
                                     >
                                         <div className="w-10 h-10 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center group-hover:scale-110 transition-transform">
                                             <MessageCircle className="w-5 h-5" />
@@ -248,7 +248,7 @@ export function QuoteModal({ children }: { children: React.ReactNode }) {
                                     </a>
 
                                     {/* Location */}
-                                    <div className="group bg-white border border-stone-200 p-6 rounded-xl hover:shadow-lg hover:border-orange-200 transition-all flex flex-col gap-3">
+                                    <div className="group bg-white border border-stone-200 p-4 md:p-6 rounded-xl hover:shadow-lg hover:border-orange-200 transition-all flex flex-col gap-2 md:gap-3">
                                         <div className="w-10 h-10 rounded-full bg-orange-50 text-orange-600 flex items-center justify-center group-hover:scale-110 transition-transform">
                                             <MapPin className="w-5 h-5" />
                                         </div>
