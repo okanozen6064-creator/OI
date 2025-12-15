@@ -151,14 +151,14 @@ export function QuoteModal({ children }: { children: React.ReactNode }) {
 
                                             {/* Email Input */}
                                             <div className="relative group">
-                                                <div className="absolute left-1 top-1 bottom-1 w-10 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 group-focus-within:bg-blue-500 group-focus-within:text-white transition-all">
+                                                <div className="absolute left-1 top-1 bottom-1 w-10 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600 group-focus-within:bg-orange-500 group-focus-within:text-white transition-all">
                                                     <Mail className="w-5 h-5" />
                                                 </div>
                                                 <input
                                                     required
                                                     type="email"
                                                     placeholder="E-posta Adresiniz"
-                                                    className="w-full pl-14 pr-4 py-3 bg-stone-50 border-2 border-stone-100 rounded-xl outline-none focus:border-blue-500 transition-all font-medium text-stone-900 placeholder:text-stone-400"
+                                                    className="w-full pl-14 pr-4 py-3 bg-stone-50 border-2 border-stone-100 rounded-xl outline-none focus:border-orange-500 transition-all font-medium text-stone-900 placeholder:text-stone-400"
                                                     value={formData.email}
                                                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                                 />
@@ -166,14 +166,14 @@ export function QuoteModal({ children }: { children: React.ReactNode }) {
 
                                             {/* Phone Input (added to match previous form capabilities) */}
                                             <div className="relative group">
-                                                <div className="absolute left-1 top-1 bottom-1 w-10 bg-purple-100 rounded-lg flex items-center justify-center text-purple-600 group-focus-within:bg-purple-500 group-focus-within:text-white transition-all">
+                                                <div className="absolute left-1 top-1 bottom-1 w-10 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600 group-focus-within:bg-orange-500 group-focus-within:text-white transition-all">
                                                     <Phone className="w-5 h-5" />
                                                 </div>
                                                 <input
                                                     required
                                                     type="tel"
                                                     placeholder="Telefon Numaranız"
-                                                    className="w-full pl-14 pr-4 py-3 bg-stone-50 border-2 border-stone-100 rounded-xl outline-none focus:border-purple-500 transition-all font-medium text-stone-900 placeholder:text-stone-400"
+                                                    className="w-full pl-14 pr-4 py-3 bg-stone-50 border-2 border-stone-100 rounded-xl outline-none focus:border-orange-500 transition-all font-medium text-stone-900 placeholder:text-stone-400"
                                                     value={formData.phone}
                                                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                                                 />
@@ -181,13 +181,13 @@ export function QuoteModal({ children }: { children: React.ReactNode }) {
 
                                             {/* Service Input */}
                                             <div className="relative group">
-                                                <div className="absolute left-1 top-1 bottom-1 w-10 bg-emerald-100 rounded-lg flex items-center justify-center text-emerald-600 group-focus-within:bg-emerald-500 group-focus-within:text-white transition-all">
+                                                <div className="absolute left-1 top-1 bottom-1 w-10 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600 group-focus-within:bg-orange-500 group-focus-within:text-white transition-all">
                                                     <MessageSquare className="w-5 h-5" />
                                                 </div>
                                                 <input
                                                     type="text"
                                                     placeholder="Hizmet / Mesajınız"
-                                                    className="w-full pl-14 pr-4 py-3 bg-stone-50 border-2 border-stone-100 rounded-xl outline-none focus:border-emerald-500 transition-all font-medium text-stone-900 placeholder:text-stone-400"
+                                                    className="w-full pl-14 pr-4 py-3 bg-stone-50 border-2 border-stone-100 rounded-xl outline-none focus:border-orange-500 transition-all font-medium text-stone-900 placeholder:text-stone-400"
                                                     value={formData.serviceNeeded}
                                                     onChange={(e) => setFormData({ ...formData, serviceNeeded: e.target.value })}
                                                 />
@@ -196,7 +196,7 @@ export function QuoteModal({ children }: { children: React.ReactNode }) {
                                             <button
                                                 type="submit"
                                                 disabled={loading}
-                                                className="w-full bg-[#10b981] hover:bg-[#059669] text-white font-bold py-4 rounded-xl transition-all shadow-lg shadow-green-900/10 active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-lg"
+                                                className="w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-4 rounded-xl transition-all shadow-lg shadow-orange-900/20 active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-lg"
                                             >
                                                 {loading ? (
                                                     <>
@@ -204,7 +204,7 @@ export function QuoteModal({ children }: { children: React.ReactNode }) {
                                                         Gönderiliyor...
                                                     </>
                                                 ) : (
-                                                    "Gönder"
+                                                    "Teklif Alın"
                                                 )}
                                             </button>
                                         </form>
