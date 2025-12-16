@@ -93,187 +93,158 @@ export function QuoteModal({ children }: { children: React.ReactNode }) {
     return (
         <Dialog>
             <DialogTrigger asChild>{children}</DialogTrigger>
-            <DialogContent className="p-0 border-none bg-transparent shadow-none max-w-7xl w-[95vw] md:w-full mx-auto max-h-[90vh] overflow-y-auto">
-                <div className="relative bg-[#FAFAF9] w-full rounded-2xl md:rounded-[2rem] shadow-2xl flex flex-col border border-stone-200 overflow-hidden">
+            <DialogContent className="p-0 border-none bg-transparent shadow-none max-w-6xl w-[95vw] md:w-full mx-auto max-h-[92vh] overflow-y-auto outline-none data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 data-[state=open]:slide-in-from-bottom-[48%]">
+                <div className="relative bg-[#FAFAF9] w-full rounded-[1.5rem] md:rounded-[2.5rem] shadow-2xl flex flex-col overflow-hidden ring-1 ring-black/5">
 
-                    {/* Background Architectural Wireframe - Minimalist */}
-                    <div className="absolute inset-0 z-0 opacity-40 mix-blend-multiply pointer-events-none">
-                        <img
-                            src="/light-wireframe-bg.png"
-                            alt="Architectural Background"
-                            className="w-full h-full object-cover"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#FAFAF9] via-transparent to-transparent"></div>
+                    {/* Background Texture - Architectural Grid (Subtle) */}
+                    <div className="absolute inset-0 z-0 opacity-[0.25] pointer-events-none mix-blend-multiply">
+                        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+                        <div className="absolute inset-0 bg-gradient-to-tr from-stone-100 via-transparent to-transparent"></div>
                     </div>
 
-                    <div className="relative z-10 p-5 md:p-12 lg:p-16 flex flex-col items-center w-full">
+                    <div className="relative z-10 flex flex-col md:flex-row min-h-[600px]">
 
-                        <div className="text-center mb-8 md:mb-12 space-y-2 md:space-y-4">
-                            <h2 className="text-3xl md:text-7xl font-black tracking-tighter text-stone-900 leading-[0.9]">
-                                PROJEYİ <br className="hidden md:block" />
-                                <span className="text-stone-400">BAŞLATALIM</span>
-                            </h2>
-                            <p className="text-stone-500 text-sm md:text-lg uppercase tracking-widest font-medium">
-                                Dijital Mimari & Strateji
-                            </p>
-                        </div>
+                        {/* LEFT: INFO & BRANDING (Darker or Image side in some designs, but here we keep it Editorial Text) */}
+                        {/* Actually, user feedback implies 'form boxes' are ugly. Let's make the Right Side the 'Visual' anchor and Left Side the 'Clean Form'. 
+                           Let's swap standard layout: Left = Form, Right = Info.
+                           But to make it NOT look like boxes, we will use a split background or just whitespace. */
+                        }
 
-                        <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-20 items-start">
-
-                            {/* LEFT: Form Card */}
-                            <div className="lg:col-span-6 w-full">
-                                <div className="bg-white rounded-xl shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] border border-stone-100 p-6 md:p-8 lg:p-10 relative overflow-hidden group">
-                                    {/* Orange accent line */}
-                                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-500 to-amber-500"></div>
-
-                                    <h3 className="text-xl md:text-2xl font-bold text-stone-900 mb-6 md:mb-8 flex items-center gap-3">
-                                        <span className="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></span>
-                                        Bize Mesaj Gönderin
-                                    </h3>
-
-                                    {success ? (
-                                        <div className="text-center py-20 animate-in fade-in zoom-in duration-500">
-                                            <div className="w-20 h-20 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6 border border-emerald-100">
-                                                <CheckCircle className="w-10 h-10" />
-                                            </div>
-                                            <h3 className="text-2xl font-bold text-stone-900 mb-2">Talebiniz Alındı!</h3>
-                                            <p className="text-stone-500">En kısa sürede sizinle iletişime geçeceğiz.</p>
-                                        </div>
-                                    ) : (
-                                        <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
-                                            {/* SQL Injection Note: Supabase client automatically parameterizes queries, preventing SQL injection. */}
-
-                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-                                                {/* Name Input */}
-                                                <div className="group/input">
-                                                    <label className="text-xs font-bold text-stone-400 uppercase tracking-wider mb-2 block">Ad Soyad</label>
-                                                    <input
-                                                        required
-                                                        type="text"
-                                                        placeholder="Adınız Soyadınız"
-                                                        className="w-full px-4 py-3 bg-stone-50 border-2 border-stone-100 focus:border-stone-900 rounded-lg outline-none transition-all font-medium text-stone-900 placeholder:text-stone-300"
-                                                        value={formData.fullName}
-                                                        onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                                                    />
-                                                </div>
-
-                                                {/* Phone Input */}
-                                                <div className="group/input">
-                                                    <label className="text-xs font-bold text-stone-400 uppercase tracking-wider mb-2 block">Telefon</label>
-                                                    <input
-                                                        required
-                                                        type="tel"
-                                                        placeholder="05XX..."
-                                                        className="w-full px-4 py-3 bg-stone-50 border-2 border-stone-100 focus:border-stone-900 rounded-lg outline-none transition-all font-medium text-stone-900 placeholder:text-stone-300"
-                                                        value={formData.phone}
-                                                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                                                    />
-                                                </div>
-                                            </div>
-
-                                            {/* Email Input */}
-                                            <div className="group/input">
-                                                <label className="text-xs font-bold text-stone-400 uppercase tracking-wider mb-2 block">E-posta</label>
-                                                <input
-                                                    required
-                                                    type="email"
-                                                    placeholder="ornek@sirket.com"
-                                                    className="w-full px-4 py-3 bg-stone-50 border-2 border-stone-100 focus:border-stone-900 rounded-lg outline-none transition-all font-medium text-stone-900 placeholder:text-stone-300"
-                                                    value={formData.email}
-                                                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                                />
-                                            </div>
-
-                                            {/* Service Input */}
-                                            <div className="group/input">
-                                                <label className="text-xs font-bold text-stone-400 uppercase tracking-wider mb-2 block">Proje Detayları</label>
-                                                <textarea
-                                                    rows={3}
-                                                    placeholder="Nasıl bir projeye ihtiyacınız var?"
-                                                    className="w-full px-4 py-3 bg-stone-50 border-2 border-stone-100 focus:border-stone-900 rounded-lg outline-none transition-all font-medium text-stone-900 placeholder:text-stone-300 resize-none"
-                                                    value={formData.serviceNeeded}
-                                                    onChange={(e) => setFormData({ ...formData, serviceNeeded: e.target.value })}
-                                                />
-                                            </div>
-
-                                            <button
-                                                type="submit"
-                                                disabled={loading}
-                                                className="w-full bg-stone-900 hover:bg-stone-800 text-white font-bold py-4 rounded-lg transition-all shadow-lg shadow-stone-900/10 active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-3 text-base uppercase tracking-widest"
-                                            >
-                                                {loading ? (
-                                                    <>
-                                                        <Loader2 className="w-5 h-5 animate-spin" />
-                                                        Gönderiliyor...
-                                                    </>
-                                                ) : (
-                                                    "Teklif Alın"
-                                                )}
-                                            </button>
-                                        </form>
-                                    )}
-                                </div>
+                        {/* SECTION 1: THE FORM (Left - 60%) */}
+                        <div className="w-full md:w-7/12 p-6 md:p-12 lg:p-16 flex flex-col justify-center bg-[#FAFAF9]/80 backdrop-blur-sm order-2 md:order-1">
+                            <div className="mb-10">
+                                <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-stone-900 leading-none mb-3">
+                                    PROJEYİ <span className="text-stone-400">BAŞLAT</span>
+                                </h2>
+                                <p className="text-stone-500 font-medium">Bize hayalinizdeki projeden bahsedin.</p>
                             </div>
 
-                            {/* RIGHT: Info Side */}
-                            <div className="lg:col-span-6 flex flex-col justify-center space-y-8 md:space-y-12 pt-4 lg:pt-4">
-
-                                {/* Intro Text */}
-                                <div className="space-y-4 md:space-y-6">
-                                    <h3 className="text-2xl md:text-3xl font-bold text-stone-900 leading-tight">
-                                        Hayalinizdeki Projeyi <br />
-                                        <span className="text-orange-600">Gerçeğe Dönüştürelim.</span>
-                                    </h3>
-                                    <p className="text-stone-600 leading-relaxed text-base md:text-lg max-w-lg border-l-2 border-stone-200 pl-4 md:pl-6">
-                                        Markanız için sadece bir web sitesi değil, yaşayan ve büyüyen bir <strong className="text-stone-900">dijital ekosistem</strong> tasarlıyoruz.
-                                    </p>
+                            {success ? (
+                                <div className="flex flex-col items-center justify-center py-20 animate-in fade-in space-y-4">
+                                    <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center">
+                                        <CheckCircle className="w-8 h-8" />
+                                    </div>
+                                    <div className="text-center">
+                                        <h3 className="text-xl font-bold text-stone-900">Mesajınız Alındı!</h3>
+                                        <p className="text-stone-500 max-w-xs mx-auto mt-2">Ekibimiz en kısa sürede sizinle iletişime geçecektir.</p>
+                                    </div>
                                 </div>
+                            ) : (
+                                <form onSubmit={handleSubmit} className="space-y-5">
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div className="space-y-1.5">
+                                            <label className="text-xs font-bold text-stone-400 uppercase tracking-wider ml-1">Ad Soyad</label>
+                                            <input
+                                                required
+                                                type="text"
+                                                placeholder="Adınız Soyadınız"
+                                                className="w-full h-12 px-4 bg-white border-0 ring-1 ring-stone-200 focus:ring-2 focus:ring-stone-900 rounded-lg outline-none transition-all placeholder:text-stone-300 text-stone-900"
+                                                value={formData.fullName}
+                                                onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                                            />
+                                        </div>
+                                        <div className="space-y-1.5">
+                                            <label className="text-xs font-bold text-stone-400 uppercase tracking-wider ml-1">Telefon</label>
+                                            <input
+                                                required
+                                                type="tel"
+                                                placeholder="(5XX) XXX XX XX"
+                                                className="w-full h-12 px-4 bg-white border-0 ring-1 ring-stone-200 focus:ring-2 focus:ring-stone-900 rounded-lg outline-none transition-all placeholder:text-stone-300 text-stone-900"
+                                                value={formData.phone}
+                                                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                                            />
+                                        </div>
+                                    </div>
 
-                                {/* Contact Grid */}
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-                                    {/* WhatsApp */}
-                                    <a
-                                        href="https://wa.me/905013046064"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="group bg-white border border-stone-200 p-4 md:p-6 rounded-xl hover:shadow-lg hover:border-emerald-200 transition-all flex flex-col gap-2 md:gap-3"
-                                    >
-                                        <div className="w-10 h-10 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center group-hover:scale-110 transition-transform">
-                                            <MessageCircle className="w-5 h-5" />
-                                        </div>
-                                        <div>
-                                            <h4 className="text-stone-900 font-bold text-base">WhatsApp</h4>
-                                            <p className="text-stone-500 text-sm">Hızlı İletişim & Destek</p>
-                                        </div>
+                                    <div className="space-y-1.5">
+                                        <label className="text-xs font-bold text-stone-400 uppercase tracking-wider ml-1">E-posta</label>
+                                        <input
+                                            required
+                                            type="email"
+                                            placeholder="ornek@sirket.com"
+                                            className="w-full h-12 px-4 bg-white border-0 ring-1 ring-stone-200 focus:ring-2 focus:ring-stone-900 rounded-lg outline-none transition-all placeholder:text-stone-300 text-stone-900"
+                                            value={formData.email}
+                                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                                        />
+                                    </div>
+
+                                    <div className="space-y-1.5">
+                                        <label className="text-xs font-bold text-stone-400 uppercase tracking-wider ml-1">Proje Notları</label>
+                                        <textarea
+                                            rows={3}
+                                            placeholder="Aklınızdaki fikirleri kısaca anlatın..."
+                                            className="w-full p-4 bg-white border-0 ring-1 ring-stone-200 focus:ring-2 focus:ring-stone-900 rounded-lg outline-none transition-all placeholder:text-stone-300 text-stone-900 resize-none leading-relaxed"
+                                            value={formData.serviceNeeded}
+                                            onChange={(e) => setFormData({ ...formData, serviceNeeded: e.target.value })}
+                                        />
+                                    </div>
+
+                                    <div className="pt-2">
+                                        <button
+                                            type="submit"
+                                            disabled={loading}
+                                            className="w-full h-14 bg-stone-900 hover:bg-black text-white font-bold rounded-lg transition-all shadow-xl shadow-stone-900/10 hover:shadow-stone-900/20 active:scale-[0.99] disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-3 text-base uppercase tracking-widest group"
+                                        >
+                                            {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : (
+                                                <>
+                                                    Teklif Alın <span className="text-stone-500 group-hover:text-white transition-colors">→</span>
+                                                </>
+                                            )}
+                                        </button>
+                                    </div>
+                                </form>
+                            )}
+                        </div>
+
+                        {/* RIGHT: EDITORIAL / CONTACT (Right - 40%) */}
+                        <div className="w-full md:w-5/12 bg-white flex flex-col justify-between p-8 md:p-12 lg:p-16 border-l border-stone-100 order-1 md:order-2">
+
+                            {/* Top decorative */}
+                            <div className="hidden md:block">
+                                <div className="w-12 h-1 bg-stone-900 mb-8"></div>
+                                <h3 className="text-2xl font-bold text-stone-900 leading-snug">
+                                    Dijital<br />
+                                    Ekosistem<br />
+                                    Mimarisi.
+                                </h3>
+                            </div>
+
+                            {/* Mobile visual header */}
+                            <div className="md:hidden mb-6 flex items-center gap-3">
+                                <div className="h-px bg-stone-300 flex-1"></div>
+                                <span className="text-xs font-bold text-stone-400 uppercase tracking-widest">İletişim</span>
+                                <div className="h-px bg-stone-300 flex-1"></div>
+                            </div>
+
+                            <div className="space-y-8 md:space-y-12">
+
+                                {/* WhatsApp */}
+                                <div className="group cursor-pointer">
+                                    <h4 className="text-stone-400 text-xs font-bold uppercase tracking-widest mb-2 group-hover:text-emerald-600 transition-colors">Doğrudan İletişim</h4>
+                                    <a href="https://wa.me/905013046064" target="_blank" className="flex items-center gap-3 group/link">
+                                        <span className="text-2xl font-bold text-stone-900 group-hover/link:underline decoration-2 underline-offset-4 decoration-emerald-500 transition-all">WhatsApp</span>
+                                        <ArrowRight className="w-5 h-5 -rotate-45 text-stone-300 group-hover/link:text-emerald-500 transition-colors" />
                                     </a>
+                                </div>
 
-                                    {/* Location */}
-                                    <div className="group bg-white border border-stone-200 p-4 md:p-6 rounded-xl hover:shadow-lg hover:border-orange-200 transition-all flex flex-col gap-2 md:gap-3">
-                                        <div className="w-10 h-10 rounded-full bg-orange-50 text-orange-600 flex items-center justify-center group-hover:scale-110 transition-transform">
-                                            <MapPin className="w-5 h-5" />
-                                        </div>
-                                        <div>
-                                            <h4 className="text-stone-900 font-bold text-base">Konum</h4>
-                                            <p className="text-stone-500 text-xs font-mono mt-1 tracking-tight">36°44'02.1"N 29°55'07.5"E</p>
-                                        </div>
+                                {/* Location */}
+                                <div>
+                                    <h4 className="text-stone-400 text-xs font-bold uppercase tracking-widest mb-2">Konum</h4>
+                                    <div className="flex flex-col">
+                                        <span className="text-lg font-medium text-stone-900">Antalya, Türkiye</span>
+                                        <span className="text-sm font-mono text-stone-500 mt-1 select-all bg-stone-100 w-fit px-2 py-1 rounded">36°44'02.1"N 29°55'07.5"E</span>
                                     </div>
                                 </div>
 
-                                {/* Minimal Footer */}
-                                <div className="pt-6 border-t border-stone-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                                    <div className="flex items-center gap-2">
-                                        <div className="h-2 w-2 bg-green-500 rounded-full animate-pulse"></div>
-                                        <span className="text-stone-500 text-sm font-medium">Yeni projeler için müsaitiz</span>
-                                    </div>
-                                    <div className="flex gap-4 opacity-60 hover:opacity-100 transition-opacity">
-                                        <a href="#" className="text-stone-900"><Instagram className="w-5 h-5" /></a>
-                                        <a href="#" className="text-stone-900"><Linkedin className="w-5 h-5" /></a>
-                                        <a href="#" className="text-stone-900"><Globe className="w-5 h-5" /></a>
-                                    </div>
+                                {/* Footer-ish */}
+                                <div className="hidden md:block pt-8 text-stone-400 text-sm leading-relaxed">
+                                    <p>Yeni projeler için müsaitiz.</p>
+                                    <p>Global standartlarda işler üretiyoruz.</p>
                                 </div>
-
                             </div>
+
                         </div>
+
                     </div>
                 </div>
             </DialogContent>
