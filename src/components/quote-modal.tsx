@@ -3,7 +3,7 @@
 import * as React from "react"
 import { useState } from "react"
 import * as DialogPrimitive from "@radix-ui/react-dialog"
-import { X, CheckCircle, Loader2, Phone, MessageCircle, User, Mail, MessageSquare, Instagram, Linkedin, Globe, MapPin } from "lucide-react"
+import { X, CheckCircle, Loader2, Phone, MessageCircle, User, Mail, MessageSquare, Instagram, Linkedin, Globe, MapPin, ArrowRight } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { supabase } from "@/lib/supabase"
 
