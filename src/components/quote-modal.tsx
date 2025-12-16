@@ -202,17 +202,19 @@ export function QuoteModal({ children }: { children: React.ReactNode }) {
                             {/* Top decorative */}
                             <div className="hidden md:block">
                                 <div className="w-12 h-1 bg-stone-900 mb-8"></div>
-                                <h3 className="text-2xl font-bold text-stone-900 leading-snug">
-                                    Dijital<br />
-                                    Ekosistem<br />
-                                    Mimarisi.
+                                <h3 className="text-2xl font-bold text-stone-900 leading-snug mb-4">
+                                    Hayalinizdeki Projeyi<br />
+                                    Gerçeğe Dönüştürelim.
                                 </h3>
+                                <p className="text-stone-500 text-sm leading-relaxed">
+                                    Markanız için sadece bir web sitesi değil, yaşayan ve büyüyen bir dijital ekosistem tasarlıyoruz.
+                                </p>
                             </div>
 
                             {/* Mobile visual header */}
                             <div className="md:hidden mb-6 flex items-center gap-3">
                                 <div className="h-px bg-stone-300 flex-1"></div>
-                                <span className="text-xs font-bold text-stone-400 uppercase tracking-widest">İletişim</span>
+                                <span className="text-xs font-bold text-stone-400 uppercase tracking-widest">İletişim & Vizyon</span>
                                 <div className="h-px bg-stone-300 flex-1"></div>
                             </div>
 
@@ -220,7 +222,7 @@ export function QuoteModal({ children }: { children: React.ReactNode }) {
 
                                 {/* WhatsApp */}
                                 <div className="group cursor-pointer">
-                                    <h4 className="text-stone-400 text-xs font-bold uppercase tracking-widest mb-2 group-hover:text-emerald-600 transition-colors">Doğrudan İletişim</h4>
+                                    <h4 className="text-stone-400 text-xs font-bold uppercase tracking-widest mb-2 group-hover:text-emerald-600 transition-colors">Hızlı İletişim & Destek</h4>
                                     <a href="https://wa.me/905013046064" target="_blank" className="flex items-center gap-3 group/link">
                                         <span className="text-2xl font-bold text-stone-900 group-hover/link:underline decoration-2 underline-offset-4 decoration-emerald-500 transition-all">WhatsApp</span>
                                         <ArrowRight className="w-5 h-5 -rotate-45 text-stone-300 group-hover/link:text-emerald-500 transition-colors" />
@@ -231,15 +233,14 @@ export function QuoteModal({ children }: { children: React.ReactNode }) {
                                 <div>
                                     <h4 className="text-stone-400 text-xs font-bold uppercase tracking-widest mb-2">Konum</h4>
                                     <div className="flex flex-col">
-                                        <span className="text-lg font-medium text-stone-900">Antalya, Türkiye</span>
-                                        <span className="text-sm font-mono text-stone-500 mt-1 select-all bg-stone-100 w-fit px-2 py-1 rounded">36°44'02.1"N 29°55'07.5"E</span>
+                                        <span className="text-sm font-mono text-stone-900 bg-stone-100 w-fit px-3 py-1.5 rounded border border-stone-200 select-all">36°44'02.1"N 29°55'07.5"E</span>
                                     </div>
                                 </div>
 
                                 {/* Footer-ish */}
-                                <div className="hidden md:block pt-8 text-stone-400 text-sm leading-relaxed">
+                                <div className="hidden md:block pt-8 text-stone-400 text-xs leading-relaxed border-t border-stone-100 mt-auto">
                                     <p>Yeni projeler için müsaitiz.</p>
-                                    <p>Global standartlarda işler üretiyoruz.</p>
+                                    <p>© {new Date().getFullYear()} OI Agency.</p>
                                 </div>
                             </div>
 
